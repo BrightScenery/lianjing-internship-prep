@@ -62,7 +62,7 @@
 4. **RAG 知识库**：搭建了本地知识库问答系统（LangChain + Ollama）
 
 我的完整学习记录、项目代码和每日笔记已公开在 GitHub 上：
-https://github.com/[你的用户名]/lianjin-internship-prep
+https://github.com/[你的用户名]/lianjing-internship-prep
 
 附件是我的简历，期待有机会到贵公司实习学习。
 
