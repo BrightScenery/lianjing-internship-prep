@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+*.log
+
+# RAG data (可能包含大文件)
+projects/rag-knowledge-base/data/*.pdf
+projects/rag-knowledge-base/data/chroma_db/

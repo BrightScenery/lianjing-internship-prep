@@ -1,0 +1,60 @@
+{
+  "start_date": "2026-04-22",
+  "target_date": "2026-06-05",
+  "total_days": 45,
+  "current_day": 0,
+  "total_commits": 0,
+  "consecutive_days": 0,
+  "total_code_lines": 0,
+  "projects_completed": 0,
+  "projects_total": 4,
+  "total_notes": 0,
+  "weekly_goals": {
+    "week1_linux": {
+      "status": "not_started",
+      "target_commits": 7,
+      "target_scripts": 5,
+      "target_commands": 30,
+      "target_hours": 12
+    },
+    "week2_docker": {
+      "status": "not_started",
+      "target_commits": 7,
+      "target_dockerfiles": 3,
+      "target_containers": 2,
+      "target_hours": 12
+    },
+    "week3_k8s": {
+      "status": "not_started",
+      "target_commits": 7,
+      "target_yaml_configs": 2,
+      "target_deployments": 1,
+      "target_hours": 12
+    },
+    "week4_rag": {
+      "status": "not_started",
+      "target_commits": 7,
+      "target_code_lines": 200,
+      "target_documents": 3,
+      "target_qa_tests": 10,
+      "target_hours": 15
+    },
+    "week5_llm": {
+      "status": "not_started",
+      "target_commits": 7,
+      "target_api_calls": 20,
+      "target_code_lines": 150,
+      "target_hours": 12
+    },
+    "week6_resume": {
+      "status": "not_started",
+      "target_tasks": [
+        "完善 GitHub README",
+        "部署 VitePress 网站",
+        "撰写简历",
+        "模拟面试准备",
+        "发送邮件给 HR"
+      ]
+    }
+  }
+}
