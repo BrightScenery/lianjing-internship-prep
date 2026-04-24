@@ -1,0 +1,44 @@
+2026-04-22 09:00:01 [INFO] [web-server] Application started on port 8080
+2026-04-22 09:00:02 [INFO] [database] Connected to PostgreSQL at 10.0.0.5:5432
+2026-04-22 09:00:03 [INFO] [cache] Redis cache initialized, TTL=3600s
+2026-04-22 09:01:15 [INFO] [web-server] GET /api/users 200 45ms
+2026-04-22 09:01:20 [WARNING] [database] Slow query detected: SELECT * FROM orders WHERE status='pending' (took 2340ms)
+2026-04-22 09:01:45 [INFO] [web-server] POST /api/orders 201 120ms
+2026-04-22 09:02:00 [ERROR] [auth] Failed login attempt for user 'admin' from 192.168.1.100
+2026-04-22 09:02:01 [ERROR] [auth] Failed login attempt for user 'admin' from 192.168.1.100
+2026-04-22 09:02:02 [ERROR] [auth] Failed login attempt for user 'admin' from 192.168.1.100
+2026-04-22 09:02:03 [WARNING] [auth] Account locked: too many failed attempts for user 'admin'
+2026-04-22 09:03:10 [INFO] [web-server] GET /api/products 200 32ms
+2026-04-22 09:03:45 [INFO] [web-server] GET /api/orders 200 67ms
+2026-04-22 09:04:00 [DEBUG] [cache] Cache hit ratio: 78.5%
+2026-04-22 09:04:30 [INFO] [scheduler] Cron job 'cleanup-temp-files' started
+2026-04-22 09:04:31 [INFO] [scheduler] Deleted 42 temporary files, freed 128MB
+2026-04-22 09:05:00 [ERROR] [database] Connection pool exhausted (max=20, active=20)
+2026-04-22 09:05:01 [ERROR] [web-server] GET /api/reports 503 5002ms - Service Unavailable
+2026-04-22 09:05:02 [WARNING] [database] Connection pool exhausted, queuing requests
+2026-04-22 09:05:15 [INFO] [database] Connection pool recovered (active=12)
+2026-04-22 09:06:00 [INFO] [web-server] POST /api/users 201 89ms
+2026-04-22 09:06:30 [INFO] [web-server] GET /api/dashboard 200 156ms
+2026-04-22 09:07:00 [DEBUG] [cache] Cache miss for key: dashboard_stats_20260422
+2026-04-22 09:07:01 [INFO] [cache] Regenerated cache key: dashboard_stats_20260422, TTL=300s
+2026-04-22 09:08:00 [WARNING] [web-server] Response time exceeded threshold: POST /api/upload (took 4500ms)
+2026-04-22 09:08:30 [INFO] [auth] User 'zhangwei' logged in successfully from 10.0.1.25
+2026-04-22 09:09:00 [INFO] [web-server] GET /api/notifications 200 28ms
+2026-04-22 09:09:15 [ERROR] [web-server] DELETE /api/orders/9527 403 12ms - Forbidden
+2026-04-22 09:10:00 [INFO] [scheduler] Cron job 'sync-external-data' started
+2026-04-22 09:10:30 [WARNING] [scheduler] External API rate limit approaching (95/100)
+2026-04-22 09:11:00 [INFO] [scheduler] Sync completed: 156 records updated, 23 new records
+2026-04-22 09:12:00 [INFO] [web-server] GET /api/health 200 5ms
+2026-04-22 09:12:30 [ERROR] [database] Deadlock detected on table 'inventory', transaction rolled back
+2026-04-22 09:13:00 [WARNING] [database] Retrying transaction on table 'inventory'
+2026-04-22 09:13:01 [INFO] [database] Transaction retry succeeded on table 'inventory'
+2026-04-22 09:14:00 [INFO] [web-server] GET /api/users/me 200 18ms
+2026-04-22 09:15:00 [DEBUG] [cache] Memory usage: 256MB/1024MB (25%)
+2026-04-22 09:15:30 [INFO] [web-server] POST /api/products 201 95ms
+2026-04-22 09:16:00 [INFO] [web-server] GET /api/search?q=server 200 234ms
+2026-04-22 09:16:30 [ERROR] [auth] Invalid JWT token received from 172.16.0.50
+2026-04-22 09:17:00 [INFO] [web-server] GET /api/metrics 200 42ms
+2026-04-22 09:18:00 [WARNING] [web-server] Memory usage high: 85% of allocated heap
+2026-04-22 09:18:30 [INFO] [scheduler] Cron job 'generate-report' started
+2026-04-22 09:19:00 [INFO] [scheduler] Report generated: monthly_sales_april.pdf (2.4MB)
+2026-04-22 09:20:00 [INFO] [web-server] GET /api/reports/download/monthly_sales_april 200 1200ms
