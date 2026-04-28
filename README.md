@@ -58,12 +58,12 @@
 
 | 指标 | 数值 |
 |------|------|
-| 📅 学习天数 | 5 / 45 |
-| 🔥 连续 commit 天数 | 5 |
-| 📝 代码提交次数 | 5 |
+| 📅 学习天数 | 7 / 45 |
+| 🔥 连续 commit 天数 | 7 |
+| 📝 代码提交次数 | 7 |
 | 💻 累计代码行数 | 280 |
-| 📦 完成项目 | 0 / 4 |
-| 📖 学习笔记 | 5 / 45 |
+| 📦 完成项目 | 1 / 4 |
+| 📖 学习笔记 | 7 / 45 |
 
 ## 🗓️ 6 周学习路线
 
@@ -78,8 +78,9 @@
 
 ## 🛠️ 技术栈掌握情况
 
-- [x] Linux 基础（30+ 命令）— ping/curl/wget/ssh/ps/top/free/df/du/chmod/chown/grep/sed/awk 等
-- [x] Shell 脚本编程 — 已编写 4 个脚本（check-system.sh / text-process.sh / file-practice.sh / net-api-check.sh）
+- [x] Linux 基础（35+ 命令）— ping/curl/wget/ssh/ps/top/free/df/du/chmod/chown/grep/sed/awk 等
+- [x] Shell 脚本编程 — 已编写 6 个脚本（check-system.sh / text-process.sh / file-practice.sh / net-api-check.sh / batch-rename.sh）
+- [x] Linux 进阶概念 — 环境变量/PATH/软链接/硬链接
 - [ ] Docker 容器化
 - [ ] Kubernetes 基础
 - [ ] RAG 知识库搭建

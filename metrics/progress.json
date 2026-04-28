@@ -2,20 +2,24 @@
   "start_date": "2026-04-22",
   "target_date": "2026-06-05",
   "total_days": 45,
-  "current_day": 5,
-  "total_commits": 5,
-  "consecutive_days": 5,
+  "current_day": 7,
+  "total_commits": 7,
+  "consecutive_days": 7,
   "total_code_lines": 280,
-  "projects_completed": 0,
+  "projects_completed": 1,
   "projects_total": 4,
   "total_notes": 0,
   "weekly_goals": {
     "week1_linux": {
-      "status": "in_progress",
+      "status": "completed",
       "target_commits": 7,
+      "actual_commits": 7,
       "target_scripts": 5,
+      "actual_scripts": 6,
       "target_commands": 30,
-      "target_hours": 12
+      "actual_commands": 35,
+      "target_hours": 12,
+      "actual_hours": 33
     },
     "week2_docker": {
       "status": "not_started",
