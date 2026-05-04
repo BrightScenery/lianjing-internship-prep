@@ -1,0 +1,19 @@
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile.compose
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:7-alpine"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
