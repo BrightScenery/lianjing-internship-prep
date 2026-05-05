@@ -2,11 +2,11 @@
   "start_date": "2026-04-22",
   "target_date": "2026-06-05",
   "total_days": 45,
-  "current_day": 10,
-  "total_commits": 10,
-  "consecutive_days": 10,
-  "total_code_lines": 280,
-  "projects_completed": 1,
+  "current_day": 14,
+  "total_commits": 14,
+  "consecutive_days": 14,
+  "total_code_lines": 450,
+  "projects_completed": 2,
   "projects_total": 4,
   "total_notes": 10,
   "weekly_goals": {
@@ -22,11 +22,15 @@
       "actual_hours": 33
     },
     "week2_docker": {
-      "status": "in_progress",
+      "status": "completed",
       "target_commits": 7,
+      "actual_commits": 7,
       "target_dockerfiles": 3,
+      "actual_dockerfiles": 3,
       "target_containers": 2,
-      "target_hours": 12
+      "actual_containers": 3,
+      "target_hours": 12,
+      "actual_hours": 20
     },
     "week3_k8s": {
       "status": "not_started",
