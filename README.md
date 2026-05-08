@@ -91,7 +91,7 @@
 
 1. [系统状态检查脚本](projects/hello-shell/) — Linux + Shell
 2. [Flask Web 服务容器化](projects/docker-python-app/) — Docker
-3. [K8s Minikube 部署](projects/k8s-minikube-demo/) — Kubernetes
+3. [K8s k3s 部署实战](projects/k8s-k3s-demo/) — Kubernetes
 4. [本地 RAG 知识库](projects/rag-knowledge-base/) — LangChain + Ollama + ChromaDB
 
 ## 📰 每日学习日志

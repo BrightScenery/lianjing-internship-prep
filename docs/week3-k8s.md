@@ -3,7 +3,7 @@
 > 日期：2026.05.06 - 2026.05.12
 
 ## 本周目标
-理解 Kubernetes 核心概念，能用 Minikube 搭建本地集群，部署容器化应用。
+理解 Kubernetes 核心概念，能用 k3s 搭建轻量级集群，部署容器化应用。
 
 ## 学习内容
 
@@ -26,7 +26,7 @@
 2. [ ] Service 配置
 
 ## 本周产出
-- 项目：[K8s Minikube 部署](../../projects/k8s-minikube-demo/)
+- 项目：[K8s k3s 部署实战](../../projects/k8s-k3s-demo/)
 
 ## 量化数据
 | 指标 | 目标 | 实际 |
