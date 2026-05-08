@@ -21,15 +21,16 @@ TOTAL_CODE_LINES=$(get_val "total_code_lines")
 PROJECTS_COMPLETED=$(get_val "projects_completed")
 TOTAL_NOTES="$CURRENT_DAY"
 
-# 计算当前周次（用 python3 避免 WSL2 date 兼容问题）
-WEEK_NUM=$(python3 -c "
-import datetime
-start = datetime.date(2026, 4, 22)
-today = datetime.date.today()
-diff = (today - start).days
-week = diff // 7 + 1
-print(max(1, min(6, week)))
-" 2>/dev/null || echo 1)
+# 计算当前周次（用 date +%s 做天数差，兼容 WSL2）
+WEEK_NUM=$(awk "BEGIN {
+    start = mktime(\"2026 04 22 0 0 0\")
+    today = systime()
+    diff = int((today - start) / 86400)
+    week = int(diff / 7) + 1
+    if (week < 1) week = 1
+    if (week > 6) week = 6
+    print week
+}")
 
 # 简化版：用 awk 做整块替换，避免 sed 特殊字符问题
 awk -v day="$CURRENT_DAY" -v commits="$TOTAL_COMMITS" \
