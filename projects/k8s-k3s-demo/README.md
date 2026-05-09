@@ -54,4 +54,4 @@ curl http://localhost:31304/api/health
 | kube-proxy | 每个节点上的程序，监听 Service 变化，写入 iptables 规则 |
 | Ingress | 7层路由，一个端口暴露多个服务 |
 | Middleware | 请求预处理（路径重写、认证、限流） |
-| IngressRoute | Traefik 的自定义 Ingress，支持每条路由单独配 Middleware |
+| IngressRoute | Traefik 的自定义 Ingress，支持每条路由单独配 Middleware | 

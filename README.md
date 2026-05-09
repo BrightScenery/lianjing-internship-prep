@@ -73,7 +73,7 @@
 ## 🛠️ 技术栈掌握情况
 
 - [x] Linux 基础（35+ 命令）— ping/curl/wget/ssh/ps/top/free/df/du/chmod/chown/grep/sed/awk 等
-- [x] Shell 脚本编程 — 已编写 6 个脚本（check-system.sh / text-process.sh / file-practice.sh / net-api-check.sh / batch-rename.sh）
+- [x] Shell 脚本编程 — 已编写 5 个脚本（check-system.sh / text-process.sh / file-practice.sh / net-api-check.sh / batch-rename.sh）
 - [x] Linux 进阶概念 — 环境变量/PATH/软链接/硬链接
 - [x] Docker 容器化 — 镜像/容器/分层/多阶段构建/.dockerignore/缓存优化
 - [x] Kubernetes 基础 — Pod/Deployment/Service/IngressRoute 概念与实操

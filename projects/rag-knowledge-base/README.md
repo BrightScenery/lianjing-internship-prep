@@ -59,3 +59,4 @@ docker run -p 7860:7860 rag-app
 | 本地模型部署（Ollama） | |
 | Prompt Engineering | |
 | Agent / Function Calling | |
+
