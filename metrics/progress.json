@@ -35,7 +35,7 @@
     "week3_k8s": {
       "status": "in_progress",
       "target_commits": 7,
-      "actual_commits": 3,
+      "actual_commits": 4,
       "target_yaml_configs": 2,
       "actual_yaml_configs": 6,
       "target_deployments": 1,

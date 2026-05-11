@@ -20,6 +20,7 @@
 
 ## 文件列表
 
+### 手动部署 YAML
 | 文件 | 说明 | 对应知识点 |
 |------|------|-----------|
 | `deployment.yaml` | nginx Deployment（3副本） | Pod 管理 |
@@ -28,6 +29,22 @@
 | `flask-service.yaml` | Flask Service（NodePort） | 端口暴露 |
 | `middleware-nginx.yaml` | Traefik StripPrefix 中间件 | 请求预处理 |
 | `ingressroute.yaml` | Traefik IngressRoute（路径路由） | 7层路由 |
+
+### Helm Chart（推荐部署方式）
+
+| 文件 | 说明 |
+|------|------|
+| `helm-flask/Chart.yaml` | Chart 元信息（名称、版本） |
+| `helm-flask/values.yaml` | 配置变量（镜像、副本、端口） |
+| `helm-flask/templates/*.yaml` | Go 模板文件 |
+
+**使用方式**：
+```bash
+cd helm-flask
+helm install flask-release . --kubeconfig /etc/rancher/k3s/k3s.yaml
+helm upgrade flask-release . --set replicaCount=3 --reuse-values
+helm rollback flask-release 1
+```
 
 ## 运行方式
 

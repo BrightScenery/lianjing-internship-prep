@@ -1,0 +1,16 @@
+# Patterns to ignore when building packages.
+# This supports shell glob matching, doublestar glob, and regex.
+#
+# See https://helm.sh/docs/chart_template_guide/helm_ignore_file/ for details.
+#
+# .helmignore files starting with # are treated as comments.
+.DS_Store
+.git
+.gitignore
+.bzr
+.hg
+.svn
+.idea
+.vscode
+.helmignore
+Thumbs.db
