@@ -92,7 +92,7 @@
        └──────────┘  └──────────┘  └──────────┘
 ```
 
-### 一次请求的完整路径（以你的 Flask 应用为例）
+### 一次请求的完整路径（以 Flask 应用为例）
 
 ```
 浏览器请求
@@ -129,7 +129,7 @@ Namespace: default
 ### 声明式 API 的核心思想
 
 ```
-你写 YAML → kubectl apply → API Server 记录"期望状态"
+写 YAML → kubectl apply → API Server 记录"期望状态"
                               ↓
                     Controller 持续对比：
                     "期望状态" vs "实际状态"
