@@ -22,3 +22,4 @@ Thumbs.db
 # RAG data (可能包含大文件)
 projects/rag-knowledge-base/data/*.pdf
 projects/rag-knowledge-base/data/chroma_db/
+projects/rag-knowledge-base/chroma_db/
