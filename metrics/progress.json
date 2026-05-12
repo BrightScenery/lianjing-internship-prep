@@ -41,7 +41,7 @@
       "target_deployments": 1,
       "actual_deployments": 2,
       "target_hours": 12,
-      "actual_hours": 8
+      "actual_hours": 15.5
     },
     "week4_rag": {
       "status": "not_started",
