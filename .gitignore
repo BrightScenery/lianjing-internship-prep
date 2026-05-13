@@ -23,3 +23,6 @@ Thumbs.db
 projects/rag-knowledge-base/data/*.pdf
 projects/rag-knowledge-base/data/chroma_db/
 projects/rag-knowledge-base/chroma_db/
+
+# Local records
+对话完整记录.md
