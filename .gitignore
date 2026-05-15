@@ -26,3 +26,4 @@ projects/rag-knowledge-base/chroma_db/
 
 # Local records
 对话完整记录.md
+chroma_db_langchain/
