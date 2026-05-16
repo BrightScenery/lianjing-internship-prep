@@ -27,7 +27,7 @@ from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
 
 # --- LLM：用 Ollama 跑本地 qwen3.5:4b ---
-from langchain_ollama import ChatOllama
+from langchain_community.chat_models import ChatTongyi
 
 # --- Prompt 模板：用变量占位，避免手动拼字符串 ---
 from langchain_core.prompts import ChatPromptTemplate
@@ -54,11 +54,11 @@ for doc in documents:
 # 第三步：文本分块
 # ==========================================
 print("\n=== 第2步：文本分块 ===")
-# chunk_size=400 每个块最多 400 字符
-# chunk_overlap=50 相邻块之间重叠 50 字符，避免知识点被硬切断
+# chunk_size=800 每个块 800 字符，包含更完整的知识点
+# chunk_overlap=150 重叠 150 字符，减少信息丢失
 text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=400,
-    chunk_overlap=50,
+    chunk_size=800,
+    chunk_overlap=150,
     separators=["\n\n", "\n", " ", ""]  # 递归切：先按空行，再按换行，再按空格，最后按字符
 )
 chunks = text_splitter.split_documents(documents)
@@ -89,20 +89,25 @@ print("\n=== 第4步：构建 RAG 链 ===")
 # --- 5.1 定义 Prompt 模板 ---
 # input_variables 表示模板里有两个占位符：context 和 input
 # context 会被检索到的文档片段填充，input 是用户的问题
-prompt = ChatPromptTemplate.from_template("""你是一个基于检索资料的问答助手。请**只使用参考资料**来回答问题。
+prompt = ChatPromptTemplate.from_template("""你是一个基于检索资料的问答助手。请只使用参考资料来回答问题。
 
 如果资料中没有相关信息，请明确说明"资料中没有相关信息"，不要编造答案。
 
 参考资料：
-{{context}}
+{context}
 
-问题：{{input}}
+问题：{input}
 
 回答：""")
 
-# --- 5.2 初始化 LLM ---
-# temperature=0 让回答尽可能确定、不随机发挥
-llm = ChatOllama(model="qwen3:4b", temperature=0)
+# --- 5.2 初始化 LLM：用 dashscope SDK 直接调通义 API ---
+# 这里写一个薄包装类，让 dashscope 能接进 LangChain 的链里
+# 优先从环境变量读取 API Key，避免明文暴露在代码中
+api_key = os.environ.get("DASHSCOPE_API_KEY")
+if not api_key:
+    api_key = input("请输入通义 API Key: ").strip()
+
+llm = ChatTongyi(model="qwen-plus", temperature=0, dashscope_api_key=api_key)
 
 # --- 5.3 创建检索器 ---
 retriever = vector_store.as_retriever(search_kwargs={"k": 3})
@@ -118,7 +123,8 @@ retriever = vector_store.as_retriever(search_kwargs={"k": 3})
 # 3. llm：调用 LLM 生成回答
 # 4. StrOutputParser()：把 LLM 的原始输出转成纯字符串
 
-rag_chain = (
+# 回答链（只负责生成回答）
+answer_chain = (
     {"context": itemgetter("input") | retriever, "input": RunnablePassthrough()}
     | prompt
     | llm
@@ -133,9 +139,9 @@ print("=== 开始提问 ===\n")
 questions = [
     "WSL2 是什么？",
     "Docker 容器和虚拟机有什么区别？",
-    #"K8s 的 Pod 是什么？",
-    #"你们支持哪些异构算力？",
-    #"chmod 命令是干什么的？",
+    "K8s 的 Pod 是什么？",
+    "你们支持哪些异构算力？",
+    "chmod 命令是干什么的？",
     "LangChain 是什么？",  # 这个问题资料里没有，看模型会不会编造
 ]
 
@@ -144,13 +150,14 @@ for q in questions:
     print(f"问题: {q}")
     print("-" * 60)
 
-    # 调用 rag_chain，返回一个字典，包含 answer 和 context（检索到的文档）
-    result = rag_chain.invoke({"input": q})
+    # 先检索，再看回答
+    docs = retriever.invoke(q)
 
-    print(f"回答: {result['answer']}")
+    answer = answer_chain.invoke({"input": q})
 
-    # 打印检索到的来源文档，方便诊断回答质量
-    print(f"\n【参考来源】（共 {len(result['context'])} 条）")
-    for i, doc in enumerate(result["context"]):
+    print(f"回答: {answer}")
+
+    print(f"\n【参考来源】（共 {len(docs)} 条）")
+    for i, doc in enumerate(docs):
         print(f"  [{i+1}] {doc.metadata.get('source', '?')}: {doc.page_content[:80]}...")
     print()
