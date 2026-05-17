@@ -4,6 +4,10 @@ RAG 知识库 - Gradio Web 界面
 """
 
 import os
+from dotenv import load_dotenv
+
+load_dotenv()  # 自动加载 .env 文件中的环境变量
+
 import gradio as gr
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter

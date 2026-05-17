@@ -52,12 +52,12 @@
 
 | 指标 | 数值 |
 |------|------|
-| 📅 学习天数 | 17 / 45 |
-| 🔥 连续 commit 天数 | 17 |
-| 📝 代码提交次数 | 16 |
+| 📅 日历天数 | 26 / 45 |
+| 🔥 有 commit 的天数 | 25 |
+| 📝 总提交次数 | 42 |
 | 💻 累计代码行数 | 500+ |
 | 📦 完成项目 | 2 / 4 |
-| 📖 学习笔记 | 17 / 45 |
+| 📖 学习笔记 | 18 / 45 |
 
 ## 🗓️ 6 周学习路线
 
@@ -77,7 +77,7 @@
 - [x] Linux 进阶概念 — 环境变量/PATH/软链接/硬链接
 - [x] Docker 容器化 — 镜像/容器/分层/多阶段构建/.dockerignore/缓存优化
 - [x] Kubernetes 基础 — Pod/Deployment/Service/IngressRoute 概念与实操
-- [ ] RAG 知识库搭建
+- [x] RAG 知识库搭建（LangChain + ChromaDB + DashScope + Gradio）
 - [ ] 大模型 API 调用
 - [ ] Agent 开发
 
@@ -86,7 +86,7 @@
 1. [系统状态检查脚本](projects/hello-shell/) — Linux + Shell
 2. [Flask Web 服务容器化](projects/docker-python-app/) — Docker
 3. [K8s k3s 部署实战](projects/k8s-k3s-demo/) — Kubernetes
-4. [本地 RAG 知识库](projects/rag-knowledge-base/) — LangChain + Ollama + ChromaDB
+4. [本地 RAG 知识库](projects/rag-knowledge-base/) — LangChain + ChromaDB + DashScope + Gradio
 
 ## 📰 每日学习日志
 
