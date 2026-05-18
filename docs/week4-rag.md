@@ -11,12 +11,12 @@
 
 | 概念 | 我的理解 |
 |------|---------|
-| RAG 原理 | |
-| 向量数据库（ChromaDB / FAISS） | |
-| 文本分块（Chunking） | |
-| Embedding（文本向量化） | |
-| 本地模型部署（Ollama） | |
-| LangChain 框架 | |
+| RAG 原理 | 两阶段流程：用户提问 → 向量检索相关文档片段 → 拼接到 Prompt → LLM 生成回答。核心是检索质量决定回答质量 |
+| 向量数据库（ChromaDB / FAISS） | ChromaDB 是轻量级向量数据库，支持持久化到磁盘。向量 = 高维数值数组，语义相近的文本向量在空间中距离近 |
+| 文本分块（Chunking） | RecursiveCharacterTextSplitter 按段落→句子→词逐级切分，chunk_size=800 + chunk_overlap=150，避免语义断裂 |
+| Embedding（文本向量化） | 使用 DashScope text-embedding-v3 模型，将自然语言转为 1024 维向量 |
+| 本地模型部署（Ollama） | Ollama 是一键部署本地 LLM 的工具，拉取 qwen2.5:7b 后直接对话 |
+| LangChain 框架 | 用 LCEL 管道语法串联组件：`retriever | prompt | llm | parser`，声明式写法 |
 
 ### 上传的文档（目标 3+）
 

@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  rag-app:
+    build: .
+    ports:
+      - "7860:7860"
+    env_file:
+      - .env
+    volumes:
+      # 把向量数据库挂载出来，容器重启后数据不丢失
+      - ./chroma_db_gradio:/app/chroma_db_gradio
+    environment:
+      - GRADIO_SERVER_NAME=0.0.0.0
+    restart: unless-stopped

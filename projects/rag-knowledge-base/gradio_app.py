@@ -1,6 +1,13 @@
 """
 RAG 知识库 - Gradio Web 界面
 目标：将之前的 RAG 系统包装成可视化网页，支持浏览器对话交互
+
+启动流程：
+  1. 检查向量库是否存在
+     - 存在 → 直接加载
+     - 不存在 → 自动读取 data/*.md → 分块 → 向量化 → 保存 → 加载
+  2. 构建 RAG 链
+  3. 启动 Gradio 网页服务
 """
 
 import os
@@ -12,9 +19,11 @@ import gradio as gr
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import DashScopeEmbeddings
+from langchain_community.chat_models import ChatTongyi
 from langchain_chroma import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from operator import itemgetter
 
 # ==========================================
 # 路径配置
@@ -24,53 +33,62 @@ DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 DB_PATH = os.path.join(SCRIPT_DIR, "chroma_db_gradio")
 
 # ==========================================
-# 第一步：加载文档 → 分块 → 向量化
+# 第一步：获取 API Key
 # ==========================================
-print("=== 正在加载文档... ===")
-loader = DirectoryLoader(
-    DATA_DIR,
-    glob="*.md",
-    loader_cls=lambda p: TextLoader(p, encoding="utf-8")
-)
-documents = loader.load()
-print(f"共加载 {len(documents)} 个文档")
-
-print("\n=== 正在分块... ===")
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=800,
-    chunk_overlap=150,
-    separators=["\n\n", "\n", " ", ""]
-)
-chunks = text_splitter.split_documents(documents)
-print(f"共分成 {len(chunks)} 个文本块")
-
-# 这里需要设置 DASHSCOPE_API_KEY
 api_key = os.environ.get("DASHSCOPE_API_KEY")
 if not api_key:
-    api_key = input("\n请输入通义 API Key: ").strip()
+    raise ValueError("未找到 DASHSCOPE_API_KEY 环境变量，请检查 .env 文件")
 
-from langchain_community.chat_models import ChatTongyi
-
-print("\n=== 正在向量化并构建索引... ===")
-# DashScopeEmbeddings 默认使用 text-embedding-v3 模型
-# 注意：需要显式传入 dashscope_api_key，环境变量名可能不被识别
 embeddings = DashScopeEmbeddings(dashscope_api_key=api_key)
-vector_store = Chroma.from_documents(
-    documents=chunks,
-    embedding=embeddings,
-    persist_directory=DB_PATH,
-    collection_name="gradio_rag",
-)
-print(f"向量数据库就绪，数据保存在: {DB_PATH}")
 
 # ==========================================
-# 第二步：构建 RAG 链（LCEL）
+# 第二步：加载或创建向量数据库
+# ==========================================
+if os.path.exists(DB_PATH):
+    print("=== 检测到已有向量库，直接加载... ===")
+    vector_store = Chroma(
+        persist_directory=DB_PATH,
+        embedding_function=embeddings,
+        collection_name="gradio_rag",
+    )
+    print(f"向量数据库加载完成: {DB_PATH}")
+else:
+    print("=== 未检测到向量库，开始初始化... ===")
+    print("（首次启动较慢，需要向量化所有文档）")
+
+    # 读取文档
+    loader = DirectoryLoader(
+        DATA_DIR,
+        glob="*.md",
+        loader_cls=lambda p: TextLoader(p, encoding="utf-8")
+    )
+    documents = loader.load()
+    print(f"共加载 {len(documents)} 个文档")
+
+    # 分块
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=800,
+        chunk_overlap=150,
+        separators=["\n\n", "\n", " ", ""]
+    )
+    chunks = text_splitter.split_documents(documents)
+    print(f"共分成 {len(chunks)} 个文本块")
+
+    # 向量化并保存
+    vector_store = Chroma.from_documents(
+        documents=chunks,
+        embedding=embeddings,
+        persist_directory=DB_PATH,
+        collection_name="gradio_rag",
+    )
+    print(f"向量数据库创建完成: {DB_PATH}")
+
+# ==========================================
+# 第三步：构建 RAG 链（LCEL）
 # ==========================================
 print("\n=== 构建 RAG 链... ===")
 
 retriever = vector_store.as_retriever(search_kwargs={"k": 3})
-
-from operator import itemgetter
 
 prompt = ChatPromptTemplate.from_template("""你是一个基于检索资料的问答助手。请只使用参考资料来回答问题。
 
@@ -94,7 +112,7 @@ rag_chain = (
 print("RAG 链构建完成！\n")
 
 # ==========================================
-# 第三步：Gradio 界面
+# 第四步：Gradio 界面
 # ==========================================
 
 def respond(message, history):
@@ -112,11 +130,6 @@ def respond(message, history):
     except Exception as e:
         return f"出错了: {str(e)}"
 
-# gr.ChatInterface 会自动生成:
-# - 聊天消息显示区
-# - 底部输入框
-# - 发送按钮
-# - 清空对话按钮
 demo = gr.ChatInterface(
     fn=respond,
     title="RAG 知识库问答",
@@ -124,6 +137,4 @@ demo = gr.ChatInterface(
 )
 
 if __name__ == "__main__":
-    # launch() 会在本地启动一个 Web 服务
-    # 默认地址: http://127.0.0.1:7860
     demo.launch()
