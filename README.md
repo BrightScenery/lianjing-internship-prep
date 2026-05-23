@@ -52,12 +52,12 @@
 
 | 指标 | 数值 |
 |------|------|
-| 📅 日历天数 | 26 / 45 |
-| 🔥 有 commit 的天数 | 25 |
-| 📝 总提交次数 | 42 |
-| 💻 累计代码行数 | 500+ |
+| 📅 日历天数 | 29 / 45 |
+| 🔥 有 commit 的天数 | 26 |
+| 📝 总提交次数 | 43 |
+| 💻 累计代码行数 | 530+ |
 | 📦 完成项目 | 2 / 4 |
-| 📖 学习笔记 | 18 / 45 |
+| 📖 学习笔记 | 19 / 45 |
 
 ## 🗓️ 6 周学习路线
 
@@ -78,8 +78,8 @@
 - [x] Docker 容器化 — 镜像/容器/分层/多阶段构建/.dockerignore/缓存优化
 - [x] Kubernetes 基础 — Pod/Deployment/Service/IngressRoute 概念与实操
 - [x] RAG 知识库搭建（LangChain + ChromaDB + DashScope + Gradio）
-- [ ] 大模型 API 调用
-- [ ] Agent 开发
+- [x] 大模型 API 调用
+- [x] Agent 开发（ReAct 范式 + toy_agent.py）
 
 ## 📁 项目展示
 
