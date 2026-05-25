@@ -53,9 +53,9 @@
       "actual_hours": 18
     },
     "week5_llm": {
-      "status": "in_progress",
+      "status": "completed",
       "target_commits": 7,
-      "actual_commits": 5,
+      "actual_commits": 7,
       "target_api_calls": 20,
       "actual_api_calls": 25,
       "target_code_lines": 150,
