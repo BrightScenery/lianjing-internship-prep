@@ -2,13 +2,13 @@
   "start_date": "2026-04-22",
   "target_date": "2026-06-05",
   "total_days": 45,
-  "current_day": 34,
-  "total_commits": 34,
-  "consecutive_days": 34,
-  "total_code_lines": 500,
-  "projects_completed": 2,
+  "current_day": 35,
+  "total_commits": 35,
+  "consecutive_days": 35,
+  "total_code_lines": 1300,
+  "projects_completed": 4,
   "projects_total": 4,
-  "total_notes": 12,
+  "total_notes": 26,
   "weekly_goals": {
     "week1_linux": {
       "status": "completed",
@@ -64,7 +64,7 @@
       "actual_hours": 3.5
     },
     "week6_resume": {
-      "status": "not_started",
+      "status": "in_progress",
       "target_tasks": [
         "完善 GitHub README",
         "部署 VitePress 网站",
