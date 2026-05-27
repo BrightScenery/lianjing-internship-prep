@@ -89,9 +89,26 @@
 4. [本地 RAG 知识库](projects/rag-knowledge-base/) — LangChain + ChromaDB + DashScope + Gradio
 5. [大模型 API + Agent](projects/llm-agent/) — DashScope + ReAct + DuckDuckGo + Docker
 
-## 📰 每日学习日志
+## 📰 学习记录
 
-→ [查看完整日志](docs/daily-log/)
+### 每日日志
+- [第1周 (4.22-4.28)](docs/daily-log/week01/)
+- [第2周 (4.29-5.5)](docs/daily-log/week02/)
+- [第3周 (5.6-5.12)](docs/daily-log/week03/)
+- [第4周 (5.13-5.19)](docs/daily-log/week04/)
+- [第5周 (5.20-5.26)](docs/daily-log/week05/)
+- [第6周 (5.27-6.5)](docs/daily-log/week06/)
+
+### 周总结
+- [Linux](docs/weekly/week1-linux.md) · [Docker](docs/weekly/week2-docker.md) · [K8s](docs/weekly/week3-k8s.md) · [RAG](docs/weekly/week4-rag.md) · [LLM+Agent](docs/weekly/week5-llm.md)
+
+### 速查笔记
+- [Linux 命令指南](docs/cheatsheets/linux-commands-guide.md)
+- [GPU 命令速查](docs/cheatsheets/gpu-commands-cheatsheet.md)
+- [GPU 管理笔记](docs/cheatsheets/gpu-management-notes.md)
+- [Docker/K8s/Helm 总结](docs/cheatsheets/docker-k8s-helm-summary.md)
+- [Agent 范式概念](docs/cheatsheets/agent-concepts.md)
+- [RAG 知识速查](docs/cheatsheets/week4-knowledge-cheatsheet.md)
 
 ---
 
