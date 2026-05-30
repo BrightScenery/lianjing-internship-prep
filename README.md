@@ -108,6 +108,7 @@
 - [GPU 管理笔记](docs/cheatsheets/gpu-management-notes.md)
 - [Docker/K8s/Helm 总结](docs/cheatsheets/docker-k8s-helm-summary.md)
 - [Agent 范式概念](docs/cheatsheets/agent-concepts.md)
+- [Agent 知识卡片](docs/cheatsheets/agent-knowledge-cards.md) ← 面试复习用
 - [RAG 知识速查](docs/cheatsheets/week4-knowledge-cheatsheet.md)
 
 ---
